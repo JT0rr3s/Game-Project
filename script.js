@@ -10,4 +10,7 @@
         // 1. Collision if the snake runs into itself.
         // 2. Collision if the snake runs into the edge of the game board.
 // Need to figure out what follows when a collision occurs.
-// 
+
+
+
+

@@ -25,17 +25,41 @@ body {
     }
 
 main {
-    margin: auto 15px auto 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: auto 15px auto 15px;
+    display: grid;
+    grid-template-columns: repeat(50, 2%);
+    grid-template-rows: repeat(50, 2%);
     border: 2px solid white;
     width: 90%;
     height: 90%;
 }
 .head {
     background-color: #3EFF00;
-    width: 150%;
+    width: 1vh;
+    height: 2vh;
+}
+
+.top-arrow {
+    margin-top: 20px;
+    color: black;
+    background-color: gray;
+    width: 10vh;
+}
+
+.left-arrow {
+    color: black;
+    background-color: gray;
+    width: 10vh;
+}
+.right-arrow {
+    color: black;
+    background-color: gray;
+    width: 10vh;
+}
+.bottom-arrow {
+    color: black;
+    background-color: gray;
+    width: 10vh;
 }
 
 @media screen and (min-width: 764px) {
