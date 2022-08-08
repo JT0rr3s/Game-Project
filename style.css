@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     text-align: center;
+    align-content: center;
     background-color: black;
 }
 
@@ -24,20 +25,38 @@ body {
     height: 90vh;
     }
 
-main {
-    margin: auto 15px auto 15px;
+.heads-up-display {
+    margin: auto 15px auto 60px;
     display: grid;
-    grid-template-columns: repeat(50, 2%);
-    grid-template-rows: repeat(50, 2%);
+    grid-template-columns: repeat(40, 4fr);
+    grid-template-rows: repeat(40, 4fr);
     border: 2px solid white;
-    width: 90%;
-    height: 90%;
+    width: 80vh;
+    height: 80vh;
 }
+
 .head {
     background-color: #3EFF00;
-    width: 1vh;
-    height: 2vh;
+    grid-row-start: 21;
+    grid-column-start: 22;
+    position: relative;
 }
+
+
+.body {
+    background-color: #3EFF00;
+    grid-row-start: 21;
+    grid-column-start: 21;
+    
+}
+
+.tail {
+    background-color: #3EFF00;
+    grid-row-start: 21;
+    grid-column-start: 20;
+    
+}
+
 
 .top-arrow {
     margin-top: 20px;
@@ -66,22 +85,20 @@ main {
     body {
         flex-direction: column;
         width: 100%;
-        height: 90vh;
+        height: 80vh;
     }
 
     main {
-        width: 70%;
+        width: 90%;
         height: 100%;
     }
     
     head {
         flex-direction: row;
     }
-
-    .head {
-        width: 250%;
-    }
 }
+
+ 
 
 
 
