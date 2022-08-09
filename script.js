@@ -13,48 +13,69 @@
 // Need to figure out what follows when a collision occurs.
 
 const head = document.querySelector(".head");
+const body = document.querySelector(".body");
 const rightBtn = document.querySelector(".right-arrow");
 const upBtn = document.querySelector(".top-arrow");
 const downBtn = document.querySelector(".bottom-arrow");
 const leftBtn = document.querySelector(".left-arrow");
 
-let position = 0;
+let leftPosition = 0;
+let topPosition = 0;
+let leftPosition2 = 0;
+let topPosition2 = 0;
 let currentInterval = 0;
 let newPosition = 0;
+let isInverse = false;
+let isLeft = false;
 
 // Function for the incremented number of moves
 const myMove = () => {
-    position++;
-    position += 0;
+    
+    if(!isInverse && isLeft) {
+        leftPosition++;
+    } 
+    else if (isInverse && isLeft) {
+        leftPosition--;
+    }
+    else if (!isInverse && !isLeft) {
+        topPosition++;
+    }
+    else {
+        topPosition--;
+    }
 }
 
 // Functions for each buttons pressed.
 const up = () => {
-    myMove()
-    head.style.bottom = position + "px";
-    newPosition = head.style.bottom;
-    console.log(newPosition);
+    isInverse = true;
+    isLeft = false;
+    myMove();
+    head.style.top = topPosition + "px";
+    body.style.top = topPosition2 + "px";
 }
 
 const right = () => {
-    myMove()
-    head.style.left = position + "px";
-    newPosition = head.style.left;
-    console.log(newPosition);
+    isInverse = false;
+    isLeft = true;
+    myMove();
+    head.style.left = leftPosition + "px";
+    body.style.left = leftPosition2 + "px";
 }
 
 const down = () => {
-    myMove()
-    head.style.top = position + "px";
-    newPosition = head.style.top;
-    console.log(newPosition);
+    isInverse = false;
+    isLeft = false;
+    myMove();
+    head.style.top = topPosition + "px";
+    body.style.top = topPosition2 + "px";
 }
 
 const left = () => {
-    myMove()
-    head.style.right = position + "px";
-    newPosition = head.style.right;
-    console.log(newPosition);
+    isInverse = true;
+    isLeft = true;
+    myMove();
+    head.style.left = leftPosition + "px";
+    body.style.left = leftPosition2 + "px";
 }
 
 // Events from the arrow key buttons pressed.
@@ -62,22 +83,16 @@ const left = () => {
 const control = (e) => {
     if (e.keyCode === 39) {
         clearInterval(currentInterval);
-        newPosition;
-        currentInterval = setInterval(right, 50);
-        return currentInterval;
+        currentInterval = setInterval(right, 10);
     }else if (e.keyCode === 38) {
         clearInterval(currentInterval);
-        newPosition;
-        currentInterval = setInterval(up, 50);
-        return currentInterval;
+        currentInterval = setInterval(up, 10);
     }else if (e.keyCode === 37) {
         clearInterval(currentInterval);
-        newPosition;
-        currentInterval = setInterval(left, 50);
+        currentInterval = setInterval(left, 10);
     }else if (e.keyCode === 40) {
         clearInterval(currentInterval);
-        newPosition;
-        currentInterval = setInterval(down, 50);
+        currentInterval = setInterval(down, 10);
     }
     }
 
@@ -88,26 +103,22 @@ document.addEventListener("keyup", control);
 // Buttons pressed using the mouse.
 upBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    newPosition;
-    currentInterval = setInterval(up, 50);
+    currentInterval = setInterval(up, 10);
 })
 
 rightBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    newPosition;
-    currentInterval = setInterval(right, 50);
-    })
+    currentInterval = setInterval(right, 10);
+})
 
 downBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    newPosition;
-    currentInterval = setInterval(down, 50);
+    currentInterval = setInterval(down, 10);
 })
 
 leftBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    newPosition;
-    currentInterval = setInterval(left, 50);
+    currentInterval = setInterval(left, 10);
 })
 
 
