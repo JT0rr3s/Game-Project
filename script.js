@@ -13,20 +13,34 @@
 // Need to figure out what follows when a collision occurs.
 
 const head = document.querySelector(".head");
-const body = document.querySelector(".body");
+const food = document.querySelector(".food");
 const rightBtn = document.querySelector(".right-arrow");
 const upBtn = document.querySelector(".top-arrow");
 const downBtn = document.querySelector(".bottom-arrow");
 const leftBtn = document.querySelector(".left-arrow");
+const random = document.querySelector(".random");
 
 let leftPosition = 0;
 let topPosition = 0;
-let leftPosition2 = 0;
-let topPosition2 = 0;
 let currentInterval = 0;
 let newPosition = 0;
 let isInverse = false;
 let isLeft = false;
+let food1 = 0;
+let food2 = 0;
+
+
+
+// Function for food
+const myFood = () => {
+    food.style.gridRowStart = Math.floor(Math.random() * 40);
+    food1 = food.style.gridRowStart;
+    food.style.gridColumnStart = Math.floor(Math.random() * 40);
+    food2 = food.style.gridRowStart;
+    console.log(food1);
+}
+
+      
 
 // Function for the incremented number of moves
 const myMove = () => {
@@ -36,6 +50,7 @@ const myMove = () => {
     } 
     else if (isInverse && isLeft) {
         leftPosition--;
+        console.log(leftPosition);
     }
     else if (!isInverse && !isLeft) {
         topPosition++;
@@ -45,13 +60,13 @@ const myMove = () => {
     }
 }
 
-// Functions for each buttons pressed.
+
+   // Functions for each buttons pressed.
 const up = () => {
     isInverse = true;
     isLeft = false;
     myMove();
     head.style.top = topPosition + "px";
-    body.style.top = topPosition2 + "px";
 }
 
 const right = () => {
@@ -59,7 +74,6 @@ const right = () => {
     isLeft = true;
     myMove();
     head.style.left = leftPosition + "px";
-    body.style.left = leftPosition2 + "px";
 }
 
 const down = () => {
@@ -67,7 +81,6 @@ const down = () => {
     isLeft = false;
     myMove();
     head.style.top = topPosition + "px";
-    body.style.top = topPosition2 + "px";
 }
 
 const left = () => {
@@ -75,8 +88,8 @@ const left = () => {
     isLeft = true;
     myMove();
     head.style.left = leftPosition + "px";
-    body.style.left = leftPosition2 + "px";
 }
+
 
 // Events from the arrow key buttons pressed.
 
@@ -120,6 +133,8 @@ leftBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
     currentInterval = setInterval(left, 10);
 })
+}
+
 
 
 
