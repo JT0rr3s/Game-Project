@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+
 * {
     margin: 0px;
     padding: 0px;
@@ -14,6 +17,7 @@
 
 header {
     margin: 20px 0px 20px 0px;
+    font-size: 40px;
     color: white;
 }
 
@@ -24,6 +28,12 @@ body {
     width: 85%;
     height: 90vh;
     }
+
+.textType {
+    margin-bottom: 20px;
+    font-family: "sans-serif";
+    color: white;
+}
 
 .heads-up-display {
     margin: auto 15px auto 60px;
@@ -47,7 +57,6 @@ body {
     background-color: #ff0019;
     grid-row-start: 5;
     grid-column-start: 10;
-    border-radius: 30px;
     height: 15px;
     width: 15px;
     
