@@ -21,66 +21,55 @@ const leftBtn = document.querySelector(".left-arrow");
 const random = document.querySelector(".random");
 const score = document.querySelector(".score");
 
+
+
+let blockMovement = 15.5;
 let leftPosition = 0;
 let topPosition = 0;
 let currentInterval = 0;
 let isInverse = false;
 let isLeft = false;
-let food1 = 0;
-let food2 = 0;
+let foods = []; // [food => gridRowStart, food => gridColumnStart]
 let currentScore = 0;
+let snakeHead = []; // [snakeHeadY, snakeHeadX]
+let snakeHeadY = 15;
+let snakeHeadX = 15;
 
-
-// function draw() {
-//     if (head.isTouching(food)) {
-//     
-//     }
-// }
-
-
+console.log(foods);
+console.log(snakeHead);
 
 
 // Function for food
 const myFood = () => {
     food.style.gridRowStart = Math.floor(Math.random() * 40);
-    food1 = food.style.gridRowStart;
-    console.log(food1);
+    foods.push(Number(food.style.gridRowStart));
     food.style.gridColumnStart = Math.floor(Math.random() * 40);
-    food2 = food.style.gridRowStart;
-    
+    foods.push(Number(food.style.gridColumnStart));  
 }
 myFood();
 
-const sameLocation = () => {
-if (leftPosition == food1 && topPosition == food2) {
+const currentPosition = () => {
+    if (snakeHead.length != 0 && foods.length != 0 && snakeHead[0] == foods[0] && snakeHead[1] == snakeHead[1]) {
         currentScore++;
         score.innerHTML += currentScore;
-        console.log(score.innerHTML);
-    }else {
-        
-    }
+    }{}
 }
-sameLocation();
-
-      
+console.log(currentPosition);
+  
 // Function for the incremented number of moves
 const myMove = () => {
     
     if(!isInverse && isLeft) {
         leftPosition++;
-        console.log(leftPosition);
     } 
     else if (isInverse && isLeft) {
         leftPosition--;
-        console.log(leftPosition);
     }
     else if (!isInverse && !isLeft) {
-        topPosition++;
-        console.log(topPosition);
+        topPosition++;  
     }
     else {
-        topPosition--;
-        console.log(topPosition);
+        topPosition--; 
 }
 }
 
@@ -90,31 +79,33 @@ const up = () => {
     isInverse = true;
     isLeft = false;
     myMove();
-    head.style.top = topPosition + "px";
-    console.log(head.style.top);
+    head.style.top = (topPosition * blockMovement) + "px";
+    snakeHead.splice(0, 1, snakeHeadY -= 1); 
 }
 
 const right = () => {
     isInverse = false;
     isLeft = true;
     myMove();
-    head.style.left = leftPosition + "px";
-}
+    head.style.left = (leftPosition * blockMovement) + "px";
+    snakeHead.splice(1, 1, snakeHeadX += 1);
+}  
 
 const down = () => {
     isInverse = false;
     isLeft = false;
     myMove();
-    head.style.top = topPosition + "px";
+    head.style.top = (topPosition * blockMovement) + "px";
+    snakeHead.splice(0, 1, snakeHeadY += 1);
 }
 
 const left = () => {
     isInverse = true;
     isLeft = true;
     myMove();
-    head.style.left = leftPosition + "px";
+    head.style.left = (leftPosition * blockMovement) + "px";
+    snakeHead.splice(1, 1, snakeHeadX -= 1);
 }
-
 
 
 // Events from the arrow key buttons pressed.
@@ -122,18 +113,18 @@ const left = () => {
 const control = (e) => {
     if (e.keyCode === 39) {
         clearInterval(currentInterval);
-        currentInterval = setInterval(right, 9);
+        currentInterval = setInterval(right, 600);
     }else if (e.keyCode === 38) {
         clearInterval(currentInterval);
-        currentInterval = setInterval(up, 9);
+        currentInterval = setInterval(up, 600);
     }else if (e.keyCode === 37) {
         clearInterval(currentInterval);
-        currentInterval = setInterval(left, 9);
+        currentInterval = setInterval(left, 600);
     }else if (e.keyCode === 40) {
         clearInterval(currentInterval);
-        currentInterval = setInterval(down, 9);
+        currentInterval = setInterval(down, 600);
     }
-    }
+}
 
 // Arrow key buttons pressed on the keyboard.
 document.addEventListener("keyup", control);
@@ -142,22 +133,22 @@ document.addEventListener("keyup", control);
 // Buttons pressed using the mouse.
 upBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    currentInterval = setInterval(up, 9);
+    currentInterval = setInterval(up, 600);
 })
 
 rightBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    currentInterval = setInterval(right, 9);
+    currentInterval = setInterval(right, 600);
 })
 
 downBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    currentInterval = setInterval(down, 9);
+    currentInterval = setInterval(down, 600);
 })
 
 leftBtn.addEventListener("click", () => {
     clearInterval(currentInterval);
-    currentInterval = setInterval(left, 9);
+    currentInterval = setInterval(left, 600);
 })
 
 

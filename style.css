@@ -36,7 +36,7 @@ body {
 }
 
 .heads-up-display {
-    margin: auto 15px auto 60px;
+    margin: auto 0px auto 10px;
     display: grid;
     grid-template-columns: repeat(40, 4fr);
     grid-template-rows: repeat(40, 4fr);
@@ -47,9 +47,11 @@ body {
 
 .head {
     background-color: #3EFF00;
-    grid-row-start: 20;
-    grid-column-start: 20;
+    grid-row-start: 15;
+    grid-column-start: 15;
     position: relative;
+    height: 15px;
+    width: 15px;
 }
 
 
@@ -61,14 +63,6 @@ body {
     width: 15px;
     
 }
-
-/* .tail {
-    background-color: #3EFF00;
-    grid-row-start: 21;
-    grid-column-start: 20;
-    
-} */
-
 
 .top-arrow {
     margin-top: 20px;
